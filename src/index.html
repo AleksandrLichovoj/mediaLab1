@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset=utf-8/>
 <title>Lab 1. Introduction to HTML5 and HLS</title>
   
   <!--
-  Embed needed js libraries for video player. Note, libraries needs to be hosted on your server, under /js folder.
+  <link rel="stylesheet" href="video-js.css"> 
+<script src="video.js"></script> 
+<script src="videojs-hls.min.js"></script> 
    -->
   <!--
-  Location for CSS if needed. Note, cascade style sheets needs to be hosted on your server, under /css folder.
+  <script type="text/javascript" src="https://flashphoner.com/downloads/builds/flashphoner_client/wcs_api-2.0/current/flashphoner.js"></script> 
+<script type="text/javascript" src="hls-player-min.js"></script>
   -->
    
 
@@ -20,17 +24,52 @@
   <!--
   location for your player window
   -->
+<p>
+<video id="video1" width="400" controls>
+<source src="big_buck_bunny_480p_stereo.ogg">
+</video>
+</p>
   
-	<button type="button">Play</button>
-	<button type="button">Pause</button>
-	<button type="button">Stop</button>
-	<button type="button">Jump to 5 sec forward</button>
-	<button type="button">Jump to 5 sec backwards</button>	
+	<button onclick="play()" type="button">Play</button>
+	<button onclick="pause()" type="button">Pause</button>
+	<button onclick="stop()" type="button">Stop</button>
+	<button onclick="forward()" type="button">Jump to 5 sec forward</button>
+	<button onclick="back()" type="button">Jump to 5 sec backwards</button>	
 	
 	<p>Playlist</p>
 	
 	<input type="text" name="url1" size="100" value="https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"><button type="button">Load</button><br>
 	<input type="text" name="url2" size="100" value="https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"><button type="button">Load</button><br>
 	<button type="button">Shuffle</button>
+
+<script>
+var myVideo = document.getElementById("video1"); 
+
+function play(){
+myVideo.play();
+}
+
+function pause(){
+myVideo.pause();
+}
+
+function stop(){
+myVideo.pause();
+myVideo.currentTime = 0;
+play.setAttribute('data-icon','P');
+}
+
+function forward(){
+myVideo.currentTime += 5;
+}
+
+function back(){
+myVideo.currentTime -= 5;
+}
+
+
+</script>
+
 </body>
 </html>
+
